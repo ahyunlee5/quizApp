@@ -1,7 +1,35 @@
+* {
+    display: flexbox;
+    box-sizing: border-box;
+}
 body {
     background-color: black;
 }
+.beginning-container {
+    border: 1px solid greenyellow;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
 .question-score-container {
+    display: flexbox;
+    float: right;
     color: white;
+    list-style: none;
+
+    border: 1px solid yellow;
     
+}
+.quizLogo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+    border: 1px solid red;
+}
+.beginning-message {
+    color: white;
+    text-align: center;
+
+    border: 1px solid orange;
 }
