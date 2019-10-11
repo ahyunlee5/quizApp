@@ -1,35 +1,79 @@
 * {
     display: flexbox;
     box-sizing: border-box;
+    font-family: 'Karla', sans-serif;
+    font-family: 'Crimson Text', serif;
 }
 body {
     background-color: black;
 }
 .beginning-container {
-    border: 1px solid greenyellow;
     width: 50%;
     margin-left: auto;
     margin-right: auto;
+    padding-bottom: 20px;
 }
 .question-score-container {
-    display: flexbox;
+    display: flex;
+    justify-content: space-evenly;
     float: right;
     color: white;
     list-style: none;
-
-    border: 1px solid yellow;
-    
+    padding: 25px;
+    width: 100%;    
+}
+#mainContainer {
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+#js-start-button {
+    width: 250px;
+    height: 50px;
+    border-radius: 15px;
+    font-size: 25px;
+}
+#js-start-button:hover {
+    color: green;
+    background-color: yellowgreen;
 }
 .quizLogo {
     display: block;
     margin-left: auto;
     margin-right: auto;
-
-    border: 1px solid red;
 }
 .beginning-message {
     color: white;
     text-align: center;
+}
+.questionAnswerForm {
+    color: white;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.answer-choices {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
 
-    border: 1px solid orange;
+.submitButton {
+    width: 250px;
+    height: 50px;
+    border-radius: 15px;
+    margin: 30px 0 0;
+    align-self: center;
+    font-size: 25px;
+}
+.submitButton:hover {
+    color: green;
+    background-color: yellowgreen;
+
+.hide{
+    display: none;
 }

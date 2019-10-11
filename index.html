@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Let It Rain</title>
     <meta name='description' type='Quiz App about investing'>
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text|Karla&display=swap" rel="stylesheet">
     <link rel='stylesheet' type='text/css' href='index.css'>
 </head>
 <body>
@@ -14,19 +15,19 @@
             <img
                 src="https://sayingimages.com/wp-content/uploads/biz-niz-man-make-it-rain-meme.jpg" alt="Make it rain" class='quizLogo'>
         </div>
-        <div class='beginning-container'>
-            <h1 class='beginning-message'>You going to invest?</h1>
+        <div class='beginning-container'> 
             <ul class='question-score-container'>
-                <li>Question:<span class='questionNum'>0</span>/10</li>
+                <li>Question:<span class='questionNumber'>0</span></li>
                 <li>Score: <span class='score'>0</span></li>
             </ul>
+            <h1 class='beginning-message startQuiz'>Know your basics?</h1> 
         </div>
-    </header>
     </header>
     <main id='mainContainer'>
         <div class ="startButton">
-            <button type="button" id="js-start-button" class="startButton">Play Quiz</button>
+            <button type="button" id="js-start-button" class="startQuiz">Start</button>
         </div>
+        <div class='questionAnswerForm'></div>
     </main>
     <script src ='https://code.jquery.com/jquery-3.2.1.min.js'></script>
     <script src='index.js'></script>
