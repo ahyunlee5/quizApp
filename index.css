@@ -73,7 +73,8 @@ body {
 .submitButton:hover {
     color: green;
     background-color: yellowgreen;
+}
 
-.hide{
+.hide {
     display: none;
 }

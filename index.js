@@ -98,20 +98,42 @@ function questionNumberUpdate() {
 
 function checkAnswer() {
   //checks against correctAnswer to see if it's compatiable
+  $('form').on('submit', function(event) {
+    event.preventDefault();
+    let selectedAnswer = $('input:checked');
+    let answer = selectedAnswer.val();
+    let correctAnswer = `${STORE[questionNumber].correctAnswer}`;
+    if (answer === correctAnswer) {
+      selectedAnswer.parent().addClass('correct');
+      rightAnswer();
+    } else {
+      selectedAnswer.parent().addClass('wrong');
+      wrongAnswer();
+    }
+  });
 }
 
 function rightAnswer() {
   //when answer is answered correclty
+  let correctAnswer = `${STORE[questionNumber].correctAnswer}`;
+  $('.questionAnswerForm').html(`<div class="correctFeedback"><p><b>That's correct!</b></p><button type=button class="nextButton">Next</button></div>`);
   score ++;
 }
 
 function wrongAnswer() {
   //when answer is incorrect
+  let correctAnswer = `${STORE[questionNumber].correctAnswer}`;
+  $('.questionAnswerForm').html(`<div class="correctFeedback"><p><b>Wrong!</b><br>the correct answer is <span>"${correctAnswer}"</span></p><button type=button class="nextButton">Next</button></div>`);
   score;
 }
 
 function nextQuestion() {
   //next question
+  $('main').on('click', '.nextButton', function (event) {
+    questionNumberUpdate();
+    renderQuestion();
+    checkAnswer();
+  });
 }
 
 function final() {
@@ -120,11 +142,9 @@ function final() {
 
 function allFunctions() {
   startQuiz();
-  scoreUpdate();
   checkAnswer();
-  rightAnswer();
-  wrongAnswer();
   nextQuestion();
+  final();
 }
 
 $(allFunctions);
