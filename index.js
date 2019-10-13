@@ -3,27 +3,52 @@
 const STORE = [
   {
     question : 'How do you figure out how long it will take to double your money?',
-    answer : ['The Rule of 72', 'Double your money and divide by months investing', 'Hard to determine', 'YOLO just wing it'],
-    correctAnswer : 'The rule of 72. By dividing 72 by the annual rate of return you get a rough estiamte',
+    answer : [
+      'The Rule of 72', 
+      'Double your money and divide by months investing', 
+      'Hard to determine', 
+      'YOLO just wing it'
+      ],
+    correctAnswer : 'The Rule of 72',
   },
   {
     question : 'What type of investment strategy gives the highest return?',
-    answer : ['Savings', 'Mutual Funds', 'CD', 'Stocks'],
+    answer : [
+      'Savings', 
+      'Mutual Funds', 
+      'CD', 
+      'Stocks'
+      ],
     correctAnswer : 'Stock',
   },
   {
     question : 'What is a maturity date?',
-    answer : ['The day retirement fund is released', 'The date when debt is due for payment', 'When bond is due', 'Beginning of your grace period'],
+    answer : [
+      'The day retirement fund is released', 
+      'The date when debt is due for payment', 
+      'When bond is due', 
+      'Beginning of your grace period'
+    ],
     correctAnswer : 'The date when debt is due for payment',
   },
   {
     question : 'What is a dividend',
-    answer : ['Your total stock value', 'Fee for stock broker', 'Stock share earnings', 'Value divided by time period to estimate value in a given time'],
+    answer : [
+      'Your total stock value', 
+      'Fee for stock broker', 
+      'Stock share earnings', 
+      'Value divided by time period to estimate value in a given time'
+    ],
     correctAnswer : 'Stock share earnings',
   },
   {
     question : 'When should you start saving for retirement',
-    answer : ['As soon as you get your first paycheck', 'When you enter college', 'When you get advised by a broker', 'ASAP mang'],
+    answer : [
+      'As soon as you get your first paycheck', 
+      'When you enter college', 
+      'When you get advised by a broker', 
+      'ASAP mang'
+    ],
     correctAnswer : 'ASAP mang',
   }
 ];
@@ -35,9 +60,8 @@ function startQuiz() {
   //start quiz after pressing button
   $('#js-start-button').on('click', function() {
     $('.startQuiz').remove();
-    $('.questionAnswerForm').css('display', 'block');
+    $('.questionAnswer').css('display', 'block');
     $('.questionNumber').text(1);
-    renderQuestion();
     console.log('quiz started');
   });
 }
@@ -75,76 +99,93 @@ function generateQuestion() {
     </form>
     </div>`;
   } else {
-    return final();
+    // restartQuiz();
+    final();
+    $('.questionNumber').text(5)
   }
 }
 
 function renderQuestion() {
-  $('.questionAnswerForm').html(generateQuestion());
+  $('.questionAnswer').html(generateQuestion());
   console.log('rendering');
 }
 
 function scoreUpdate() {
   //through each question updates the score if question is answered correctly
   score++;
+  $('.score').text(score);
+  console.log('score updated');
 }
 
 function questionNumberUpdate() {
   //increases question 
   questionNumber++;
-  $('.questionNumber').text(questionNumber + 1);
+  $('.questionNumber').text(questionNumber);
   console.log('updated question number');
 }
 
-function checkAnswer() {
+function selectAnswer() {
   //checks against correctAnswer to see if it's compatiable
   $('form').on('submit', function(event) {
     event.preventDefault();
-    let selectedAnswer = $('input:checked');
-    let answer = selectedAnswer.val();
+    let selectedAnswer = $('input[name=answer]:checked').val();
     let correctAnswer = `${STORE[questionNumber].correctAnswer}`;
-    if (answer === correctAnswer) {
-      selectedAnswer.parent().addClass('correct');
+    if (selectedAnswer === correctAnswer) {
+      console.log('answer checked right');
       rightAnswer();
     } else {
-      selectedAnswer.parent().addClass('wrong');
+      // selectedAnswer.parent().addClass('wrong');
+      console.log('answer checked wrong')
       wrongAnswer();
+      ;
     }
   });
+}
+function answerFeedbackRight() {
+  let correctAnswer = `${STORE[questionNumber].correctAnswer}`;
+  $('.questionAnswer').html(`<div class="correctFeedback"><p><b>That's correct!</b></p><button type=button class="nextButton">Next</button></div>`);
 }
 
 function rightAnswer() {
   //when answer is answered correclty
+  answerFeedbackRight();
+  scoreUpdate();
+  console.log('answer was right');
+}
+function answerFeedbackWrong() {
   let correctAnswer = `${STORE[questionNumber].correctAnswer}`;
-  $('.questionAnswerForm').html(`<div class="correctFeedback"><p><b>That's correct!</b></p><button type=button class="nextButton">Next</button></div>`);
-  score ++;
+  $('.questionAnswer').html(`<div class="correctFeedback"><p><b>Wrong!</b><br>the correct answer is <span>"${correctAnswer}"</span></p><button type=button class="nextButton">Next</button></div>`);
+
 }
 
 function wrongAnswer() {
   //when answer is incorrect
-  let correctAnswer = `${STORE[questionNumber].correctAnswer}`;
-  $('.questionAnswerForm').html(`<div class="correctFeedback"><p><b>Wrong!</b><br>the correct answer is <span>"${correctAnswer}"</span></p><button type=button class="nextButton">Next</button></div>`);
-  score;
-}
+  answerFeedbackWrong();
+  }
 
 function nextQuestion() {
   //next question
-  $('main').on('click', '.nextButton', function (event) {
+  $('.questionAnswer').on('click', '.nextButton', function (event) {
     questionNumberUpdate();
     renderQuestion();
-    checkAnswer();
+    console.log('next question')
   });
 }
 
 function final() {
   //displays final score\
+  if (score >= 3) {
+    $('.questionAnswerForm').html(`<div class="results correctFeedback"><h3>Great Job!</h3><p>You got ${score} / 5</p><button class="restartButton">Restart Quiz</button></div>`);
+  } else {
+    $('.questionAnswerForm').html(`<div class="results correctFeedback"><h3>Try again!</h3><p>You got ${score} / 5</p><button class="restartButton">Restart Quiz</button></div>`);
+  }
 }
 
 function allFunctions() {
   startQuiz();
-  checkAnswer();
+  renderQuestion();
   nextQuestion();
-  final();
+  selectAnswer();
 }
 
 $(allFunctions);

@@ -48,7 +48,7 @@ body {
     color: white;
     text-align: center;
 }
-.questionAnswerForm {
+.questionAnswer {
     color: white;
 }
 .form {
@@ -73,6 +73,9 @@ body {
 .submitButton:hover {
     color: green;
     background-color: yellowgreen;
+}
+.correctFeedback {
+    color: white;
 }
 
 .hide {
