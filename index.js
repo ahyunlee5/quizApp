@@ -19,7 +19,7 @@ const STORE = [
       'CD', 
       'Stocks'
       ],
-    correctAnswer : 'Stock',
+    correctAnswer : 'Stocks',
   },
   {
     question : 'What is a maturity date?',
@@ -99,8 +99,8 @@ function generateQuestion() {
     </form>
     </div>`;
   } else {
-    // restartQuiz();
     final();
+    restartQuiz();
     $('.questionNumber').text(5)
   }
 }
@@ -126,9 +126,9 @@ function questionNumberUpdate() {
 
 function selectAnswer() {
   //checks against correctAnswer to see if it's compatiable
-  $('form').on('submit', function(event) {
+  $('.form').on('click', '.submitButton', function(event) {
     event.preventDefault();
-    let selectedAnswer = $('input[name=answer]:checked').val();
+    let selectedAnswer = $('input:checked').val();
     let correctAnswer = `${STORE[questionNumber].correctAnswer}`;
     if (selectedAnswer === correctAnswer) {
       console.log('answer checked right');
@@ -143,7 +143,7 @@ function selectAnswer() {
 }
 function answerFeedbackRight() {
   let correctAnswer = `${STORE[questionNumber].correctAnswer}`;
-  $('.questionAnswer').html(`<div class="correctFeedback"><p><b>That's correct!</b></p><button type=button class="nextButton">Next</button></div>`);
+  $('.questionAnswer').html(`<div class="correctFeedback"><p><h1>That's correct!</h1></p><button type=button class="nextButton">Next</button></div>`);
 }
 
 function rightAnswer() {
@@ -154,7 +154,7 @@ function rightAnswer() {
 }
 function answerFeedbackWrong() {
   let correctAnswer = `${STORE[questionNumber].correctAnswer}`;
-  $('.questionAnswer').html(`<div class="correctFeedback"><p><b>Wrong!</b><br>the correct answer is <span>"${correctAnswer}"</span></p><button type=button class="nextButton">Next</button></div>`);
+  $('.questionAnswer').html(`<div class="correctFeedback"><p><h1>Wrong!</h1><br>the correct answer is <span>"${correctAnswer}"</span></p><button type=button class="nextButton">Next</button></div>`);
 
 }
 
@@ -168,6 +168,7 @@ function nextQuestion() {
   $('.questionAnswer').on('click', '.nextButton', function (event) {
     questionNumberUpdate();
     renderQuestion();
+    selectAnswer();
     console.log('next question')
   });
 }
@@ -175,10 +176,15 @@ function nextQuestion() {
 function final() {
   //displays final score\
   if (score >= 3) {
-    $('.questionAnswerForm').html(`<div class="results correctFeedback"><h3>Great Job!</h3><p>You got ${score} / 5</p><button class="restartButton">Restart Quiz</button></div>`);
+    $('.questionAnswer').html(`<div class="results correctFeedback"><h3>Great Job!</h3><p>You got ${score} / 5</p><button class="restartButton">Restart Quiz</button></div>`);
   } else {
-    $('.questionAnswerForm').html(`<div class="results correctFeedback"><h3>Try again!</h3><p>You got ${score} / 5</p><button class="restartButton">Restart Quiz</button></div>`);
+    $('.questionAnswer').html(`<div class="results correctFeedback"><h3>Try again!</h3><p>You got ${score} / 5</p><button class="restartButton">Restart Quiz</button></div>`);
   }
+}
+function restartQuiz() {
+  $('#mainContainer').on('click', '.restartButton', function(event) {
+    location.reload();
+  });
 }
 
 function allFunctions() {
