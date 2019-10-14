@@ -178,7 +178,7 @@ function final() {
   if (score >= 3) {
     $('.questionAnswer').html(`<div class="results correctFeedback"><h3>Great Job!</h3><p>You got ${score} / 5</p><button class="restartButton">Restart Quiz</button></div>`);
   } else {
-    $('.questionAnswer').html(`<div class="results correctFeedback"><h3>Try again!</h3><p>You got ${score} / 5</p><button class="restartButton">Restart Quiz</button></div>`);
+    $('.questionAnswer').html(`<div class="results correctFeedback"><h3>Educate YoSelf and Try again!</h3><p>You got ${score} / 5</p><button class="restartButton">Restart Quiz</button></div>`);
   }
 }
 function restartQuiz() {

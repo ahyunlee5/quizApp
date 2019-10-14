@@ -5,6 +5,8 @@
     font-family: 'Crimson Text', serif;
 }
 body {
+    background-image: url('https://media.giphy.com/media/t98sVFES6fjE8OUDzO/giphy.gif');
+    background-size: cover;
     background-color: black;
 }
 .beginning-container {
@@ -17,7 +19,7 @@ body {
     display: flex;
     justify-content: space-evenly;
     float: right;
-    color: white;
+    color: black;
     list-style: none;
     padding: 25px;
     width: 100%;    
@@ -45,11 +47,11 @@ body {
     margin-right: auto;
 }
 .beginning-message {
-    color: white;
+    color: black;
     text-align: center;
 }
 .questionAnswer {
-    color: white;
+    color: black;
 }
 .form {
     display: flex;
@@ -62,6 +64,7 @@ body {
     width: 70%;
     margin-left: auto;
     margin-right: auto;
+    font-size: 20px;
 }
 
 .submitButton {
@@ -77,7 +80,32 @@ body {
     background-color: yellowgreen;
 }
 .correctFeedback {
-    color: white;
+    color: black;
+    font-size: 25px;
+}
+.nextButton {
+    width: 250px;
+    height: 50px;
+    border-radius: 15px;
+    margin: 30px 0 0;
+    align-self: center;
+    font-size: 25px;
+}
+.nextButton:hover {
+    color: green;
+    background-color: yellowgreen;
+}
+.restartButton {
+    width: 250px;
+    height: 50px;
+    border-radius: 15px;
+    margin: 30px 0 0;
+    align-self: center;
+    font-size: 25px;
+}
+.restartButton:hover {
+    color: green;
+    background-color: yellowgreen;
 }
 
 .hide {
