@@ -61,7 +61,7 @@ function startQuiz() {
   $('#js-start-button').on('click', function() {
     $('.startQuiz').remove();
     $('.questionAnswer').css('display', 'block');
-    $('.questionNumber').text(1);
+    $('.questionNumber').text(questionNumber + 1);
     console.log('quiz started');
   });
 }
@@ -70,7 +70,7 @@ function generateQuestion() {
   //go through STORE to pull up questions
   //needs to update html to include form for question
   if (questionNumber < STORE.length) {
-    return `<div class="question-${questionNumber}">
+    return `<div class="question">
     <h2>${STORE[questionNumber].question}</h2>
     <form class='form'>
     <fieldset class='answer-choices'>
@@ -118,9 +118,9 @@ function scoreUpdate() {
 }
 
 function questionNumberUpdate() {
-  //increases question 
+  //implements increased question number 
   questionNumber++;
-  $('.questionNumber').text(questionNumber);
+  $('.questionNumber').text(questionNumber + 1);
   console.log('updated question number');
 }
 
@@ -155,7 +155,6 @@ function rightAnswer() {
 function answerFeedbackWrong() {
   let correctAnswer = `${STORE[questionNumber].correctAnswer}`;
   $('.questionAnswer').html(`<div class="correctFeedback"><p><h1>Wrong!</h1><br>the correct answer is <span>"${correctAnswer}"</span></p><button type=button class="nextButton">Next</button></div>`);
-
 }
 
 function wrongAnswer() {
