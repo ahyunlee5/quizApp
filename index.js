@@ -8,7 +8,7 @@ const STORE = [
       'Double your money and divide by months investing', 
       'Hard to determine', 
       'YOLO just wing it'
-      ],
+    ],
     correctAnswer : 'The Rule of 72',
   },
   {
@@ -18,7 +18,7 @@ const STORE = [
       'Mutual Funds', 
       'CD', 
       'Stocks'
-      ],
+    ],
     correctAnswer : 'Stocks',
   },
   {
@@ -75,22 +75,22 @@ function generateQuestion() {
     <form class='form'>
     <fieldset class='answer-choices'>
     <label class="answerOption">
-    <input type="radio" value="${STORE[questionNumber].answer[0]}" name="answer" required>
+    <input type="radio" value="${STORE[questionNumber].answer[0]}" name="answer" required/>
     <span>${STORE[questionNumber].answer[0]}</span>
     </label>
     <br>
     <label class="answerOption">
-    <input type="radio" value="${STORE[questionNumber].answer[1]}" name="answer" required>
+    <input type="radio" value="${STORE[questionNumber].answer[1]}" name="answer" required/>
     <span>${STORE[questionNumber].answer[1]}</span>
     </label>
     <br>
     <label class="answerOption">
-    <input type="radio" value="${STORE[questionNumber].answer[2]}" name="answer" required>
+    <input type="radio" value="${STORE[questionNumber].answer[2]}" name="answer" required/>
     <span>${STORE[questionNumber].answer[2]}</span>
     </label>
     <br>
     <label class="answerOption">
-    <input type="radio" value="${STORE[questionNumber].answer[3]}" name="answer" required>
+    <input type="radio" value="${STORE[questionNumber].answer[3]}" name="answer" required/>
     <span>${STORE[questionNumber].answer[3]}</span>
     </label>
     </fieldset>
@@ -160,7 +160,7 @@ function answerFeedbackWrong() {
 function wrongAnswer() {
   //when answer is incorrect
   answerFeedbackWrong();
-  }
+}
 
 function nextQuestion() {
   //next question
