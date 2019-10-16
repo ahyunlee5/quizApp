@@ -126,7 +126,7 @@ function questionNumberUpdate() {
 
 function selectAnswer() {
   //checks against correctAnswer to see if it's compatiable
-  $('.form').on('click', '.submitButton', function(event) {
+  $('.form').on('submit', function(event) {
     event.preventDefault();
     let selectedAnswer = $('input:checked').val();
     let correctAnswer = `${STORE[questionNumber].correctAnswer}`;
