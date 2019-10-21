@@ -115,6 +115,11 @@ body {
     color: green;
     background-color: yellowgreen;
 }
+.feedbackImg {
+    max-width: 300px;
+    width: auto;
+    height: auto;
+}
 
 .hide {
     display: none;

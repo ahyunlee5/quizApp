@@ -62,6 +62,7 @@ function startQuiz() {
     $('.startQuiz').remove();
     $('.questionAnswer').css('display', 'block');
     $('.questionNumber').text(questionNumber + 1);
+    $('body').css('background', '#fceeef');
     console.log('quiz started');
   });
 }
@@ -143,7 +144,13 @@ function selectAnswer() {
 }
 function answerFeedbackRight() {
   let correctAnswer = `${STORE[questionNumber].correctAnswer}`;
-  $('.questionAnswer').html(`<div class="correctFeedback"><p><h1>That's correct!</h1></p><button type=button class="nextButton">Next</button></div>`);
+  $('.questionAnswer').html(`
+  <div class="correctFeedback">
+      <img src="https://media.giphy.com/media/64QCNzUMHp79HPEx2B/giphy.gif" class="feedbackImg">
+    <p>
+      <h1>That's correct!</h1>
+    </p><button type=button class="nextButton">Next</button>
+  </div>`);
 }
 
 function rightAnswer() {
@@ -154,7 +161,7 @@ function rightAnswer() {
 }
 function answerFeedbackWrong() {
   let correctAnswer = `${STORE[questionNumber].correctAnswer}`;
-  $('.questionAnswer').html(`<div class="correctFeedback"><p><h1>Wrong!</h1><br>the correct answer is <span>"${correctAnswer}"</span></p><button type=button class="nextButton">Next</button></div>`);
+  $('.questionAnswer').html(`<div class="correctFeedback"><img src="https://media.giphy.com/media/9jJQoJl5UR8kg/giphy.gif" class="feedbackImg"><p><h1>Wrong!</h1><br>the correct answer is <span>"${correctAnswer}"</span></p><button type=button class="nextButton">Next</button></div>`);
 }
 
 function wrongAnswer() {
